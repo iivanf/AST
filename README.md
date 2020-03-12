@@ -1,2 +1,2 @@
 # AST
-FullREST API with node.js
+API RESTful
