@@ -1,10 +1,28 @@
 {
-    "name": "node-api-rest",
-    "version": "2.0.0",
-    "dependencies": {
-        "mongoose": "~3.6.11",
-        "express": "^4.7.1",
-        "method-override": "^2.1.2",
-        "body-parser": "^1.5.1"
-    }
+  "name": "AST",
+  "version": "1.0.0",
+  "description": "Basic API RESTful",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iivanf/AST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iivanf/AST/issues"
+  },
+  "homepage": "https://github.com/iivanf/AST#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }

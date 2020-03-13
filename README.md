@@ -1,2 +1,2 @@
 # AST
-API RESTful
+Basic API RESTful
