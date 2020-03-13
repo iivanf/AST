@@ -12,7 +12,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 // Routes
-app.use(require('./routes/ticket.routes'))
+app.use('/api/tickets',require('./routes/ticket.routes'))
 
 //Starting the server
 app.listen(app.get('port'), () => {
