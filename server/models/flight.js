@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-const ticketSchema = new Schema({
+const flightSchema = new Schema({
     airline: {type: String, required:true},
     date: {type: String, required:true},
     originPlace: {type: String, required:true},
     destinationPlace: {type: String, required:true},
-    places: {type: Number, required:true},
+    tickets: {type: Number, required:true},
     price: {type: Number, required:true},
     items: {type: String}
 })
 
-module.exports = mongoose.model('Ticket', ticketSchema)
+module.exports = mongoose.model('Flight', flightSchema)
