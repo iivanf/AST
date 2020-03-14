@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #flightForm="ngForm" (ngSubmit)="addFlight(flightForm)">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="airline" #name="ngModel" [(ngModel)]="flightService.selectedFlight.airline" placeholder="Airline Name">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="date" #name="ngModel" [(ngModel)]="flightService.selectedFlight.date" placeholder="Flight Date (dd/mm/yyyy)">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="originPlace" #name="ngModel" [(ngModel)]="flightService.selectedFlight.originPlace" placeholder="Origin Place">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="destinationPlace" #name="ngModel" [(ngModel)]="flightService.selectedFlight.destinationPlace" placeholder="Destinatio Place">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="tickets" #name="ngModel" [(ngModel)]="flightService.selectedFlight.tickets" placeholder="Number of tickets">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="price" #name="ngModel" [(ngModel)]="flightService.selectedFlight.price" placeholder="Price">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="items" #name="ngModel" [(ngModel)]="flightService.selectedFlight.items" placeholder="items">
+                            </div>
+
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn left red" (click)="resetForm(flightForm)">Clean</button>
+                                    <button class="btn right gren">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s7">
+
+        </div>
+    </div>
+</div>
