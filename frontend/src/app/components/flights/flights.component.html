@@ -4,6 +4,7 @@
             <div class="card">
                 <div class="card-content">
                     <form #flightForm="ngForm" (ngSubmit)="addFlight(flightForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="flightService.selectedFlight._id">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" name="airline" #name="ngModel" [(ngModel)]="flightService.selectedFlight.airline" placeholder="Airline Name">
@@ -40,7 +41,33 @@
         </div>
 
         <div class="col s7">
-
+            <table>
+                <thead>
+                    <th>Aerolinea</th>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Precio</th>
+                    <th>Operacions</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flight of flightService.flights">
+                        <td>{{flight.airline}}</td>
+                        <td>{{flight.date}}</td>
+                        <td>{{flight.originPlace}}</td>
+                        <td>{{flight.destinationPlace}}</td>
+                        <td>{{flight.price}}</td>
+                        <td>
+                            <a (click)="editFlight(flight)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteFlight(flight._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
