@@ -13,6 +13,7 @@ export class Flight {
     }*/
 
     _id: string;
+    flightNumber: string;
     airline: string;
     date: string;
     originPlace: string;

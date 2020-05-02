@@ -2,7 +2,9 @@ const flight = require('../models/flight')
 const flightCtrl = {}
 
 flightCtrl.getFlights = async (req, res) => {
-    const flights = await flight.find()
+    const flightNumber = req.query.flightNumber;
+    var condition = flightNumber ? { flightNumber: { $regex: new RegExp(flightNumber), $options: "i" } } : {};
+    const flights = await flight.find(condition)
     res.json(flights)
 }
 
@@ -21,6 +23,7 @@ flightCtrl.getFlight = async (req, res) => {
 
 flightCtrl.updateFlight = async (req, res) => {
     const plane = {
+        flightNumber: req.body.flightNumber,
         airline: req.body.airline,
         date: req.body.date,
         originPlace: req.body.originPlace,
