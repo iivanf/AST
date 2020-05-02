@@ -1,7 +1,18 @@
-<nav class="nav-wrapper blue">
-  <div class="container">
-    <a href="/" class="brand-logo">AUCUPIUM</a>
+<div>
+  <nav class="nav-wraper blue">
+    <div class="container">
+      <a href="#" class="brand-logo"><i class="material-icons">flight</i>AUCUPIUM</a>
+      <ul class="right hide-on-med-and-down">
+        <li class="nav-item">
+          <a routerLink="flights" class="nav-link">Flights</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="add" class="nav-link">New</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
   </div>
-</nav>
-
-<app-flights></app-flights>
+</div>>

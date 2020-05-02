@@ -1,0 +1,108 @@
+<div *ngIf="currentFlight" class="edit-form">
+    <h4>Flight</h4>
+    <form>
+      <div class="form-group">
+        <label for="flightNumber">Flight Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="flightNumber"
+          [(ngModel)]="currentFlight.flightNumber"
+          name="flightNumber"
+        />
+      </div>
+      <div class="form-group">
+        <label for="airline">Airline</label>
+        <input
+          type="text"
+          class="form-control"
+          id="airline"
+          [(ngModel)]="currentFlight.airline"
+          name="airline"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input
+          type="text"
+          class="form-control"
+          id="date"
+          [(ngModel)]="currentFlight.date"
+          name="date"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="originPlace">Origin Place</label>
+        <input
+          type="text"
+          class="form-control"
+          id="originPlace"
+          [(ngModel)]="currentFlight.originPlace"
+          name="originPlace"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="destinationPlace">Destination Place</label>
+        <input
+          type="text"
+          class="form-control"
+          id="destinationPlace"
+          [(ngModel)]="currentFlight.destinationPlace"
+          name="destinationPlace"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tickets">Tickets</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tickets"
+          [(ngModel)]="currentFlight.tickets"
+          name="tickets"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          [(ngModel)]="currentFlight.price"
+          name="price"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="items">Extras</label>
+        <input
+          type="text"
+          class="form-control"
+          id="items"
+          [(ngModel)]="currentFlight.items"
+          name="items"
+        />
+      </div>
+  
+      
+    </form>
+  
+  
+    <button class="btn waves-effect waves-light red" (click)="deleteFlight()">
+      Delete <i class="material-icons right">delete_forever</i>
+    </button>
+  
+    <button type="submit" class="btn waves-effect waves-light" (click)="updateFlight()">
+      Update <i class="material-icons right">send</i>
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  
+  <div *ngIf="!currentFlight">
+    <br />
+    <p>Cannot access this Flight...</p>
+  </div>

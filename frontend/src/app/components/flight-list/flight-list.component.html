@@ -1,0 +1,118 @@
+<div class="list row container">
+    <div class="col s12 ">
+      <div class="row">
+        <div class="input-field col s11">
+          <input
+          type="text"
+          class="form-control"
+          placeholder="Search by flight number"
+          [(ngModel)]="flightNumber"
+          />
+        </div>
+        <div class="input-field col s1">
+          <button class="btn-floating" type="button" (click)="searchFlight()">
+            <i class="material-icons right">search</i>
+          </button>
+        </div>     
+      </div>
+    </div>
+    <div class="col s6 center-align">
+      <!-- <h4>Flight List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let flight of flights; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveFlight(flight, i)"
+        >
+          {{ flight.flightNumber }}
+        </li>
+      </ul> -->
+      <table>
+        <thead>
+            <th>Nº Vuelo</th>
+            <th>Aerolinea</th>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Precio</th>
+            <!-- <th>Operacions</th> -->
+        </thead>
+        <tbody>
+            <tr class="center-align"
+            *ngFor="let flight of flights; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveFlight(flight, i)">
+                <td>{{flight.flightNumber}}</td>
+                <td>{{flight.airline}}</td>
+                <td>{{flight.date}}</td>
+                <td>{{flight.originPlace}}</td>
+                <td>{{flight.destinationPlace}}</td>
+                <td>{{flight.price}}</td>
+                <!-- <td>
+                    <a (click)="editFlight(flight)">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a (click)="deleteFlight(flight._id)">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+    <br> 
+      <button class="btn waves-effect waves-light red" (click)="removeAllFlights()">
+        Remove All<i class="material-icons right">delete_forever</i>
+      </button>
+    </div>
+    <div class="col s6 center-align">
+        <div *ngIf="currentFlight">
+          <h4>Flight</h4>
+          <div>
+            <label><strong>Flight Number:</strong></label> {{ currentFlight.flightNumber }}
+          </div>
+          <div>
+            <label><strong>Airline:</strong></label>
+            {{ currentFlight.airline }}
+          </div>
+          <div>
+            <label><strong>Date:</strong></label>
+            {{ currentFlight.date}}
+          </div>
+          <div>
+              <label><strong>Origin Place:</strong></label>
+              {{ currentFlight.originPlace}}
+            </div>
+            <div>
+              <label><strong>Destination Place:</strong></label>
+              {{ currentFlight.destinationPlace}}
+            </div>
+            <div>
+              <label><strong>Tickets:</strong></label>
+              {{ currentFlight.tickets}}
+            </div>
+            <div>
+              <label><strong>Price:</strong></label>
+              {{ currentFlight.price}}
+            </div>
+            <div>
+              <label><strong>Extras:</strong></label>
+              {{ currentFlight.items}}
+            </div>
+    
+          <a class="btn-floating orange" href="/flights/{{ currentFlight._id }}">
+            <i class="material-icons">edit</i>
+          </a>
+            &nbsp;
+          <a class="btn-floating orange" href="/flights/{{ currentFlight._id }}">
+            <i class="material-icons">add_shopping_cart</i>
+          </a>
+
+      </div>
+  
+      <div *ngIf="!currentFlight">
+        <br />
+        <p>Please click on a Flight...</p>
+      </div>
+    </div>
+  </div>

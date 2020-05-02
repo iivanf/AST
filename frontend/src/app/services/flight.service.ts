@@ -1,40 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Flight } from '../models/flight';
-import {  FlightsComponent } from '../components/flights/flights.component';
+import { HttpClient } from '@angular/common/http';
+
+const baseUrl = 'http://localhost:3000/api/flights';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightService {
 
-  selectedFlight: Flight;
-  flights: Flight[]; 
-  readonly URL_API= 'http://localhost:3000/api/flights'
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { 
-    this.selectedFlight = new Flight();
-   }
-
-  getFlights() {
-    return this.http.get(this.URL_API)
+  getAll() {
+    return this.http.get(baseUrl);
   }
 
-  postFlight(flight: Flight) {
-    return this.http.post(this.URL_API, flight)
+  get(id) {
+    return this.http.get(`${baseUrl}/${id}`);
   }
 
-  putFlight(flight: Flight) {
-    return this.http.put(this.URL_API + `/${flight._id}`, flight)
+  create(data) {
+    return this.http.post(baseUrl, data);
   }
 
-  deleteFlight(_id: string) {
-    return this.http.delete(this.URL_API+`/${_id}`)
+  update(id, data) {
+    return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  getFlight(_id: string) {
-    return this.http.get(this.URL_API+`/${_id}`)
+  delete(id) {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 
+  deleteAll() {
+    return this.http.delete(baseUrl);
+  }
 
+  findByNumber(flightNumber) {
+    return this.http.get(`${baseUrl}?flightNumber=${flightNumber}`);
+  }
 }
