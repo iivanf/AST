@@ -8,5 +8,7 @@ router.post('/', flightCtrl.createFlights)
 router.get('/:id', flightCtrl.getFlight)
 router.put('/:id', flightCtrl.updateFlight)
 router.delete('/:id', flightCtrl.deleteFlight)
+router.delete('/',flightCtrl.deleteFlights)
+router.put('/', flightCtrl.updateFlightByNumber)
 
 module.exports = router
