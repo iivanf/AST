@@ -89,11 +89,11 @@
         />
       </div>
   
-      <button (click)="saveFlight()" class="btn btn-success">Submit</button>
+      <button (click)="saveFlight()" class="btn btn-success">Submit<i class="material-icons right">send</i></button>
     </div>
   
     <div *ngIf="submitted">
       <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newFlight()">Add</button>
+      <button class="btn btn-success" (click)="newFlight()">Add<i class="material-icons right">done</i></button>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from 'src/app/services/flight.service';
 
+declare var M: any;
+
 @Component({
   selector: 'app-flight-list',
   templateUrl: './flight-list.component.html',
@@ -12,6 +14,9 @@ export class FlightListComponent implements OnInit {
   currentFlight = null;
   currentIndex = -1;
   flightNumber = '';
+  id = '';
+  message = '';
+  
 
   constructor( private flightService: FlightService) { }
 
@@ -44,15 +49,17 @@ export class FlightListComponent implements OnInit {
   }
 
   removeAllFlights() {
-    this.flightService.deleteAll()
-      .subscribe(
-        response => {
-          console.log(response);
-          this.retrieveFlights();
-        },
-        error => {
-          console.log(error);
-        });
+    if(confirm('Are you sure you want delete all?')){
+      this.flightService.deleteAll()
+        .subscribe(
+          response => {
+            console.log(response);
+            this.retrieveFlights();
+          },
+          error => {
+            console.log(error);
+          });
+    }
   }
 
   searchFlight() {
@@ -67,4 +74,20 @@ export class FlightListComponent implements OnInit {
         });
   }
 
+  buyTicket() {
+    if(this.currentFlight.tickets<=0){
+      M.toast({html: 'This flight is sold out!'})
+    }else{
+      this.currentFlight.tickets = this.currentFlight.tickets - 1;
+      this.flightService.update(this.currentFlight._id, this.currentFlight)
+      .subscribe(
+        response => {
+          console.log(response);
+          M.toast({html: 'The flight was purchased successfully!'})
+        },
+        error => {
+          console.log(error);
+        });
+    }
+  }
 }

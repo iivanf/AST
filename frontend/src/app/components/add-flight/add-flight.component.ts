@@ -19,6 +19,7 @@ export class AddFlightComponent implements OnInit {
     price: '',
     items: ''
   };
+
   submitted = false;
 
   constructor(private flightService: FlightService) { }
@@ -28,7 +29,7 @@ export class AddFlightComponent implements OnInit {
 
   saveFlight() {
     const data = {
-      _id: this.flight._id,
+      //_id: this.flight._id,
       flightNumber: this.flight.flightNumber,
       airline: this.flight.airline,
       date: this.flight.date,
@@ -53,7 +54,7 @@ export class AddFlightComponent implements OnInit {
   newFlight() {
     this.submitted = false;
     this.flight = {
-      _id: '',
+      _id:'',
       flightNumber: '',
       airline: '',
       date: '',

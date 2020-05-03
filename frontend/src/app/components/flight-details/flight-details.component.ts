@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FlightService } from 'src/app/services/flight.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+declare var M:any;
+
 @Component({
   selector: 'app-flight-details',
   templateUrl: './flight-details.component.html',
@@ -10,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FlightDetailsComponent implements OnInit {
 
   currentFlight = null;
-  message = '';
   
   constructor(
     private flightService: FlightService,
@@ -19,7 +20,6 @@ export class FlightDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.message = '';
     this.getFlight(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -40,7 +40,7 @@ export class FlightDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The flight was updated successfully!';
+          M.toast({html: 'The flight was updated successfully!'})
         },
         error => {
           console.log(error);
@@ -48,15 +48,17 @@ export class FlightDetailsComponent implements OnInit {
   }
 
   deleteFlight() {
-    this.flightService.delete(this.currentFlight.id)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/flights']);
-        },
-        error => {
-          console.log(error);
-        });
+    if (confirm('Are you sure you want to delete it?')){
+      this.flightService.delete(this.currentFlight.id)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.router.navigate(['/flights']);
+          },
+          error => {
+            console.log(error);
+          });
+    }
   }
 
 }
